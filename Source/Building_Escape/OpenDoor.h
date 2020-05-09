@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "Engine/TriggerVolume.h"
 #include "OpenDoor.generated.h"
 
 
@@ -15,6 +16,8 @@ class BUILDING_ESCAPE_API UOpenDoor : public UActorComponent
 public:	
 	// Sets default values for this component's properties
 	UOpenDoor();
+	void OpenDoor(float DeltaTime);
+	void CloseDoor(float DeltaTime);
 
 protected:
 	// Called when the game starts
@@ -30,7 +33,8 @@ private:
 	float InitialYaw;
 	FRotator InitialRotation;
 	FRotator OpenRotation;
-	UPROPERTY(EditAnywhere)
-	float TargetYaw = -90.0f;
+	UPROPERTY(EditAnywhere) float TargetYaw = -90.0f;
+	UPROPERTY(EditAnywhere) ATriggerVolume* DoorTrigger;
+	UPROPERTY(EditAnywhere) AActor* ActorDoorOpen;
 		
 };
